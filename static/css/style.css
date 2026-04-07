@@ -1,0 +1,200 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* FUNDO GRADIENTE */
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
+  color: #f1f5f9;
+  padding: 40px;
+}
+
+/* TÍTULO */
+h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+  text-align: center;
+  background: linear-gradient(90deg, #38bdf8, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* BOTÃO NOVO POST */
+a[href="/create"] {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 30px;
+  padding: 12px 22px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  background: linear-gradient(135deg, #38bdf8, #6366f1);
+  color: white;
+  transition: 0.3s;
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+}
+
+a[href="/create"]:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 15px 35px rgba(99, 102, 241, 0.6);
+}
+
+/* LINHA */
+hr {
+  border: none;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 30px;
+}
+
+/* CARD */
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border-radius: 18px;
+  padding: 25px;
+  margin-bottom: 20px;
+  transition: 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* HOVER DO CARD */
+.card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* TÍTULO DO POST */
+.card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #e2e8f0;
+}
+
+/* RESUMO */
+.card p {
+  color: #cbd5f5;
+  margin-bottom: 10px;
+}
+
+/* AUTOR */
+.card small {
+  display: block;
+  margin-bottom: 15px;
+  color: #94a3b8;
+}
+
+/* AÇÕES */
+.acoes {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* LINKS */
+.acoes a {
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+/* VER */
+.acoes a[href*="/post"] {
+  background: rgba(56, 189, 248, 0.2);
+  color: #38bdf8;
+}
+
+.acoes a[href*="/post"]:hover {
+  background: #38bdf8;
+  color: white;
+}
+
+/* EDITAR */
+.acoes a[href*="/edit"] {
+  background: rgba(168, 85, 247, 0.2);
+  color: #a855f7;
+}
+
+.acoes a[href*="/edit"]:hover {
+  background: #a855f7;
+  color: white;
+}
+
+/* BOTÃO EXCLUIR */
+.acoes button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  transition: 0.3s;
+}
+
+.acoes button:hover {
+  background: #ef4444;
+  color: white;
+}
+
+/* RESPONSIVO */
+@media (max-width: 600px) {
+  body {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .card {
+    padding: 18px;
+  }
+}
+/* ---------------------------------------------------------- */
+
+/* PÁGINA DO POST */
+.post-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* BOTÃO VOLTAR */
+.voltar {
+  display: inline-block;
+  margin-bottom: 20px;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: rgba(148, 163, 184, 0.15);
+  color: #cbd5f5;
+  transition: 0.3s;
+}
+
+.voltar:hover {
+  background: #64748b;
+  color: white;
+}
+
+/* CONTEÚDO COMPLETO */
+.post-conteudo {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #e2e8f0;
+  margin-bottom: 20px;
+}
+
+/* AUTOR DESTACADO */
+.post-autor {
+  font-size: 14px;
+  color: #94a3b8;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 10px;
+}

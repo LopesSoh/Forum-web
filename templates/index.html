@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fórum</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <h1>📢 Fórum</h1>
+
+    <a href="/create">+ Novo Post</a>
+
+    <hr />
+
+    {% for post in posts %}
+    <div class="card">
+      <h2>{{ post.titulo }}</h2>
+      <p>{{ post.resumo }}</p>
+      <small>Autor: {{ post.autor }}</small>
+
+      <div class="acoes">
+        <a href="/post/{{ post.id }}">Ver</a>
+        <a href="/edit/{{ post.id }}">Editar</a>
+
+        <form action="/delete/{{ post.id }}" method="post">
+          <button type="submit">Excluir</button>
+        </form>
+      </div>
+    </div>
+    {% endfor %}
+  </body>
+</html>
