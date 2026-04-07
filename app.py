@@ -28,7 +28,7 @@ posts = [
     }
 ]
 
-@app.get("/index", response_class=HTMLResponse)
+@app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
 
     return templates.TemplateResponse(
@@ -71,13 +71,13 @@ async def adicionar(request: Request):
     id_str = form.get("id")
 
     if not id_str:
-        return RedirectResponse(url="/index", status_code=303)
+        return RedirectResponse(url="/", status_code=303)
 
     id = int(id_str)
 
     for post in posts:
         if post["id"] == id:
-            return RedirectResponse(url="/index", status_code=303)
+            return RedirectResponse(url="/", status_code=303)
 
     posts.append({
         "id": id,
@@ -87,7 +87,7 @@ async def adicionar(request: Request):
         "autor": form.get("autor")
     })
 
-    return RedirectResponse(url="/index", status_code=303)
+    return RedirectResponse(url="/", status_code=303)
 
 # MOSTRA A PÁGINA
 @app.get("/edit/{id}")
@@ -100,7 +100,7 @@ async def editar_post(request: Request, id: int):
             break
 
     if not post_encontrado:
-        return RedirectResponse(url="/index", status_code=303)
+        return RedirectResponse(url="/", status_code=303)
 
     return templates.TemplateResponse(
         request=request,
@@ -120,11 +120,11 @@ async def edit_post(request: Request, id: int):
         post["conteudo"] = form.get("conteudo")
         post["autor"] = form.get("autor")
 
-    return RedirectResponse(url="/index", status_code=303)
+    return RedirectResponse(url="/", status_code=303)
 
 @app.post("/delete/{id}")
 async def delete_post(id: int):
     global posts
     posts = [p for p in posts if p["id"] != id]
 
-    return RedirectResponse(url="/index", status_code=303)
+    return RedirectResponse(url="/", status_code=303)
