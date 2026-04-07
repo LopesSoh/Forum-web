@@ -121,3 +121,10 @@ async def edit_post(request: Request, id: int):
         post["autor"] = form.get("autor")
 
     return RedirectResponse(url="/index", status_code=303)
+
+@app.post("/delete/{id}")
+async def delete_post(id: int):
+    global posts
+    posts = [p for p in posts if p["id"] != id]
+
+    return RedirectResponse(url="/index", status_code=303)
