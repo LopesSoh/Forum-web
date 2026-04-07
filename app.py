@@ -88,3 +88,36 @@ async def adicionar(request: Request):
     })
 
     return RedirectResponse(url="/index", status_code=303)
+
+# MOSTRA A PÁGINA
+@app.get("/edit/{id}")
+async def editar_post(request: Request, id: int):
+
+    post_encontrado = None
+    for post in posts:
+        if post["id"] == id:
+            post_encontrado = post
+            break
+
+    if not post_encontrado:
+        return RedirectResponse(url="/index", status_code=303)
+
+    return templates.TemplateResponse(
+        request=request,
+        name="edit.html",
+        context={"post": post_encontrado}
+    )
+
+@app.post("/edit/{id}")
+async def edit_post(request: Request, id: int):
+    form = await request.form()
+
+    post = next((p for p in posts if p["id"] == id), None)
+
+    if post:
+        post["titulo"] = form.get("titulo")
+        post["resumo"] = form.get("resumo")
+        post["conteudo"] = form.get("conteudo")
+        post["autor"] = form.get("autor")
+
+    return RedirectResponse(url="/index", status_code=303)

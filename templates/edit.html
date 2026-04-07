@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <title>{{ post.titulo }}</title>
+  </head>
+  <body>
+    <h1 class="titulo">Editar Post</h1>
+
+    <form action="/edit/{{ post.id }}" method="post" class="form-edit">
+      <input
+        class="input-edit"
+        type="text"
+        name="titulo"
+        value="{{ post.titulo }}"
+      />
+      <input
+        class="input-edit"
+        type="text"
+        name="resumo"
+        value="{{ post.resumo }}"
+      />
+      <textarea class="textarea-edit" name="conteudo">
+{{ post.conteudo }}</textarea
+      >
+      <input
+        class="input-edit"
+        type="text"
+        name="autor"
+        value="{{ post.autor }}"
+      />
+
+      <button class="btn-edit" type="submit">Salvar</button>
+    </form>
+
+    <a href="/" class="voltar">Voltar</a>
+  </body>
+</html>
