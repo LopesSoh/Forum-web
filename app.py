@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -47,13 +47,44 @@ async def visualizar_post(request: Request, id: int):
             post_encontrado = post
             break
 
-    # Se não encontrar
-    if post_encontrado is None:
-        return HTMLResponse(content="Post não encontrado", status_code=404)
-
     # Se encontrar, renderiza o template
     return templates.TemplateResponse(
         request=request,
         name="post.html",
         context={"post": post_encontrado}
     )
+
+# MOSTRA A PÁGINA
+@app.get("/create")
+async def pagina_create(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="create.html",
+        context={"request": request}
+    )
+
+# RECEBE O FORM
+@app.post("/create")
+async def adicionar(request: Request):
+    form = await request.form()
+
+    id_str = form.get("id")
+
+    if not id_str:
+        return RedirectResponse(url="/index", status_code=303)
+
+    id = int(id_str)
+
+    for post in posts:
+        if post["id"] == id:
+            return RedirectResponse(url="/index", status_code=303)
+
+    posts.append({
+        "id": id,
+        "titulo": form.get("titulo"),
+        "resumo": form.get("resumo"),
+        "conteudo": form.get("conteudo"),
+        "autor": form.get("autor")
+    })
+
+    return RedirectResponse(url="/index", status_code=303)

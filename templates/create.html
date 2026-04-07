@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fórum</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <h1 class="titulo">Criar Post</h1>
+
+    <form action="/create" method="post" class="form-post">
+      <input
+        class="input-post"
+        type="number"
+        name="id"
+        placeholder="ID do post"
+        required
+      />
+
+      <input
+        class="input-post"
+        type="text"
+        name="titulo"
+        placeholder="Título"
+        required
+      />
+      <input
+        class="input-post"
+        type="text"
+        name="resumo"
+        placeholder="Resumo"
+        required
+      />
+      <textarea
+        class="textarea-post"
+        name="conteudo"
+        placeholder="Conteúdo"
+        required
+      ></textarea>
+      <input
+        class="input-post"
+        type="text"
+        name="autor"
+        placeholder="Autor"
+        required
+      />
+
+      <button class="btn-post" type="submit">Criar</button>
+    </form>
+
+    <a href="/" class="voltar">Voltar</a>
+  </body>
+</html>
