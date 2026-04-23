@@ -36,7 +36,7 @@ async def home(request: Request):
         context={"request": request, "posts": posts}
     )
 
-# 🔍 VER POST
+
 @app.get("/post/{id}", response_class=HTMLResponse)
 async def visualizar_post(request: Request, id: int):
     conexao = conectar()
@@ -54,7 +54,6 @@ async def visualizar_post(request: Request, id: int):
         context={"request": request, "post": post}
     )
 
-# ➕ MOSTRA PÁGINA CREATE
 @app.get("/create", response_class=HTMLResponse)
 async def pagina_create(request: Request):
     return templates.TemplateResponse(
@@ -63,7 +62,7 @@ async def pagina_create(request: Request):
         context={"request": request}
     )
 
-# ➕ CRIAR POST
+
 @app.post("/create")
 async def adicionar(request: Request):
     form = await request.form()
@@ -94,7 +93,7 @@ async def adicionar(request: Request):
 
     return RedirectResponse(url="/", status_code=303)
 
-# ✏️ MOSTRA PÁGINA EDIT
+
 @app.get("/edit/{id}", response_class=HTMLResponse)
 async def editar_post(request: Request, id: int):
     conexao = conectar()
@@ -115,7 +114,7 @@ async def editar_post(request: Request, id: int):
         context={"request": request, "post": post}
     )
 
-# ✏️ EDITAR POST
+
 @app.post("/edit/{id}")
 async def edit_post(request: Request, id: int):
     form = await request.form()
@@ -145,7 +144,7 @@ async def edit_post(request: Request, id: int):
 
     return RedirectResponse(url="/", status_code=303)
 
-# 🗑️ DELETAR POST
+
 @app.post("/delete/{id}")
 async def delete_post(id: int):
     conexao = conectar()
